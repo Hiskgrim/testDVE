@@ -1,0 +1,164 @@
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="page-header">INFORMACIÓN DEL CONTRATO</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                                <div class="form-group col-lg-4">
+                                    <label>VIGENCIA</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.Vigencia" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>OBJETO DEL CONTRATO</label>
+                                    <textarea rows="4" type="text" class="form-control" ng-model="contratoRegistro.contratoGeneral.ObjetoContrato"></textarea>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>PLAZO DE EJECUCIÓN [{{contratoRegistro.unidad_ejecucion_defecto.Descripcion}}]</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.PlazoEjecucion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>FORMA DE PAGO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.forma_pago_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>ORDENADOR DEL GASTO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.contratoGeneral.OrdenadorGasto" >
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>SEDE SOLICITANTE</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.sede_solicitante_defecto" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>DEPENDENCIA SOLICITANTE</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.dependencia_solicitante_defecto" disabled>
+                                </div>                                
+                                <div class="form-group col-lg-4">
+                                    <label>NÚMERO DE SOLICITUD DE NECESIDAD</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.NumeroSolicitudNecesidad">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>NÚMERO CDP</label>
+                                    <select class="form-control" ng-model="contratoRegistro.contratoGeneral.NumeroCdp" >
+                                        <option value="">--SELECCIONE--</option>
+                                        <option ng-repeat="opcion in contratoRegistro.cdp_opciones" value={{opcion.DISPONIBILIDAD}}>{{opcion.DISPONIBILIDAD}} | {{opcion.OBJETODISP}}</option>
+                                    </select>
+                                </div>
+                                <!--<div class="form-group col-lg-4">
+                                    <label>CONTRATISTA</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.Contratista" >
+                                </div>-->
+                                <!--<div class="form-group col-lg-4">
+                                    <label>VALOR CONTRATO</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.ValorContrato" >
+                                </div>-->
+                                <div class="form-group col-lg-4">
+                                    <label>JUSTIFICACIÓN</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.contratoGeneral.Justificacion">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>DESCRIPCION FORMA DE PAGO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.contratoGeneral.DescripcionFormaPago" >
+                                </div>
+                                <!--<div class="form-group col-lg-4">
+                                    <label>CONDICIONES</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.contratoGeneral.Condiciones" >
+                                </div>-->
+                                <div class="form-group col-lg-4">
+                                    <label>UNIDAD EJECUTORA</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.unidad_ejecutora_defecto.Nombre" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>TIPOLOGÍA CONTRATO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.tipologia_contrato_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>TIPO COMPROMISO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.tipo_compromiso_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>MODALIDAD DE SELECCIÓN</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.modalidad_seleccion_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>PROCEDIMIENTO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.procedimiento_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>RÉGIMEN DE CONTRATACIÓN</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.regimen_contratacion_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>TIPO GASTO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.tipo_gasto_defecto.Descripcion" disabled>                                    
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>TEMA GASTO INVERSIÓN</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.tema_gasto_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>ORIGEN PRESUPUESTO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.origen_presupuesto_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>ORIGEN RECURSOS</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.origen_recursos_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>TIPO MONEDA</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.tipo_moneda_defecto.Descripcion" disabled>
+                                </div>
+                                <!--<div class="form-group col-lg-4">
+                                    <label>VALOR CONTRATO (MONEDA EXTRANJERA)</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.ValorContratoMe" >
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>VALOR TASA DE CAMBIO</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.ValorTasaCambio" >
+                                </div>-->
+                                <div class="form-group col-lg-4">
+                                    <label>TIPO DE CONTROL</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.tipo_control_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>OBSERVACIONES</label>
+                                    <textarea rows="4" type="text" class="form-control" ng-model="contratoRegistro.contratoGeneral.Observaciones"></textarea>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>CLASE CONTRATISTA</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.clase_contratista_defecto.Descripcion" disabled>
+                                </div>
+                                <!--<div class="form-group col-lg-4">
+                                    <label>NÚMERO CONSTANCIA</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneral.NumeroConstancia">
+                                </div>-->
+                                <div class="form-group col-lg-4">
+                                    <label>TIPO DE CONTRATO</label>
+                                    <select class="form-control" ng-model="contratoRegistro.contratoGeneral.TipoContrato.Id" >
+                                        <option value="">--SELECCIONE--</option>
+                                        <option ng-repeat="opcion in contratoRegistro.tipo_contrato_opciones" value={{opcion.Id}}>{{opcion.TipoContrato}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>LUGAR DE EJECUCIÓN</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.lugar_ejecucion_defecto.Direccion" disabled>
+                                </div>
+                                <div class="form-group col-lg-12"><input type="submit" class="form-control btn btn-success" value="Registrar datos totales de contrato" ng-click="contratoRegistro.realizarContrato()">
+                                </div>
+                            </div>
+                        </form>
+                        <pre>
+                            {{contratoRegistro.contratoGeneral | json}}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

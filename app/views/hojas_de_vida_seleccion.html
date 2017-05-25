@@ -1,0 +1,105 @@
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="page-header"> HOJAS DE VIDA</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+              <div class="panel panel-default">
+                  	<div class="panel-heading">
+                      	<h4 class="intro-text text-center"> HOJAS DE VIDA INSCRITAS </h4>
+                  	</div>
+                  	<div class="panel-body">
+            			<div ui-grid="hojasDeVidaSeleccion.datosPersonas" ui-grid-selection class="grid"></div>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="col-lg-6" ng-show="hojasDeVidaSeleccion.persona">
+                <div class="panel panel-default check-element funky-show-hide">
+                	<div class="panel-heading">
+                      	<h4 class="intro-text text-center"> INFORMACIÓN BÁSICA DEL CONTRATO </h4>
+                  	</div>
+                    <div class="panel-body">
+	                        <form role="form">
+	                            <div class="row">
+	                            	<div class="col-lg-12">                          
+	                                <div class="form-group col-lg-6">
+	                                    <label>NÚMERO SEMANAS</label>
+	                                    <input type="number" class="form-control" ng-model="hojasDeVidaSeleccion.datosValor.NumSemanas" required>
+	                                </div>
+	                                <div class="form-group col-lg-6">
+	                                    <label>NÚMERO HORAS SEMANALES</label>
+	                                    <input type="number" class="form-control" ng-model="hojasDeVidaSeleccion.datosValor.NumHorasSemanales" required>
+	                                </div>
+	                                <div class="form-group col-lg-6">
+	                                    <label>DEDICACIÓN</label>
+	                                    <select class="form-control" ng-model="hojasDeVidaSeleccion.datosValor.dedicacion" required>
+	                                        <option value="">--SELECCIONE--</option>
+	                                        <option value="HCH">HORA CATEDRA HONORARIOS</option>
+	                                        <option value="HCP">HORA CATEDRA PRESTACIONES</option>                                        
+	                                        <option ng-if="hojasDeVidaSeleccion.nivelAcademico=='pregrado'" value="MTO">MEDIO TIEMPO OCASIONAL</option>
+	                                        <option ng-if="hojasDeVidaSeleccion.nivelAcademico=='pregrado'" value="TCO">TIEMPO COMPLETO OCASIONAL</option>
+	                                    </select>
+	                                </div>
+	                                <div ng-if="hojasDeVidaSeleccion.nivelAcademico=='posgrado'" class="form-group col-lg-6">
+	                                    <label>DOCENTE PLANTA</label>
+	                                    <input type="checkbox" ng-model="hojasDeVidaSeleccion.datosValor.esDocentePlanta" required>
+	                                </div>
+	                            	</div>
+	                                <div class="form-group col-lg-8 col-lg-offset-2">
+	                                	<label></label>
+	                                	<input type="submit" class="form-control btn btn-success" value="Agregar a contratos registrados" ng-click="hojasDeVidaSeleccion.registrarContrato()">
+	                                </div>
+	                            </div>
+	                        </form>
+                        <!--<pre>
+                            <p>CONDICIONES:</p>
+                            <p>HORA CÁTEGRA HONORARIOS -> Número de horas semanales entre 4 y 8.</p>
+                            <p>HORA CÁTEGRA PRESTACIONES -> Número de horas semanales entre 8 y 16.</p>
+                            <p ng-if="hojasDeVidaSeleccion.nivelAcademico=='pregrado'">MEDIO TIEMPO OCASIONAL -> Número de horas semanales entre 16 y 20.</p>
+                            <p ng-if="hojasDeVidaSeleccion.nivelAcademico=='pregrado'">TIEMPO COMPLETO OCASIONAL -> Número de horas semanales entre 24 y 40.</p>
+                        </pre>-->
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                	<div class="panel-body">
+	                    	<div class="row">
+		                    	<div class="form-group col-lg-6">
+		                    		<input type="submit" class="form-control btn-primary" value="Información personal" ng-click="hojasDeVidaSeleccion.verInformacionPersonal()">
+		                    	</div>
+		                    	<div class="form-group col-lg-6">
+		                    		<input type="submit" class="form-control btn-primary" value="Formación academica" ng-click="hojasDeVidaSeleccion.verFormacionAcademica()">
+		                    	</div>
+		                    	<div class="form-group col-lg-6">
+		                    		<input type="submit" class="form-control btn-primary" value="Experiencia laboral" ng-click="hojasDeVidaSeleccion.verHistoriaLaboral()">
+		                    	</div>
+		                    	<div class="form-group col-lg-6">
+		                    		<input type="submit" class="form-control btn-primary" value="Trabajos de investigación" ng-click="hojasDeVidaSeleccion.verTrabajosInvestigacion()">
+		                    	</div>
+		                    </div>
+	                </div>
+                </div>
+            </div>
+	        <div class="col-lg-12">
+              <div class="panel panel-default">
+                  	<div class="panel-heading">
+                      	<h4 class="intro-text text-center"> CONTRATOS A REGISTRAR </h4>
+                  	</div>
+                  	<div class="panel-body">
+            			<div ui-grid="hojasDeVidaSeleccion.contratados" ui-grid-selection class="grid"></div>
+            			<div class="form-group col-lg-6">
+            				<button type="submit" class="form-control btn-success" ng-click="hojasDeVidaSeleccion.inscribirContratos()">Inscribir conjunto de contratos</button>
+            			</div>
+            			<div class="form-group col-lg-6">
+	            			<button type="submit" class="form-control btn-danger" ng-click="hojasDeVidaSeleccion.eliminarSeleccionados()">Eliminar seleccionados</button>
+	            		</div>
+        			</div>
+        		</div>
+        	</div>
+	    </div>
+    </div>
+
+    <script type="text/javascript" src="scripts/numeroletras.js"></script>
+
+</div>
