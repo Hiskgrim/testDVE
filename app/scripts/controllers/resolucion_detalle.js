@@ -12,46 +12,44 @@ angular.module('clienteApp')
 
   	var self=this;
 
-    self.nivelCarrera=$routeParams.nivelCarrera;
-    self.tipoDedicacion=$routeParams.tipoDedicacion;
-    self.idFacultad=$routeParams.idFacultad;
-
-    self.datosContratos=[];
-
-    academica_request.getAll("proyecto_curricular/"+self.nivelCarrera+"/"+self.idFacultad).then(function(response){
-      self.proyectos=response.data;
-    });
+    self.idResolucion=$routeParams.idResolucion;
 
     self.contratados=[];
 
-    switch(self.tipoDedicacion){      
-      case "TCO_MTO":
-        contratacion_request.getAll("contratado/tco").then(function(response){
-          if(response.data){
-            self.contratados=self.contratados.concat(response.data);
-          }
-        });
-        contratacion_request.getAll("contratado/mto").then(function(response){
-          if(response.data){
-            self.contratados=self.contratados.concat(response.data);
-          }
-        });
-        break;
-      case "HCP":
-        contratacion_request.getAll("contratado/hcp").then(function(response){
-          if(response.data){
-            self.contratados=self.contratados.concat(response.data);
-          }
-        });
-        break;
-      case "HCH":
-        contratacion_request.getAll("contratado/hch").then(function(response){
-          if(response.data){
-            self.contratados=self.contratados.concat(response.data);
-          }
-        });
-        break;
-    }
+    contratacion_request.getOne("resolucion_vinculacion_docente",self.idResolucion).then(function(response){      
+      self.datosFiltro=response.data;
+      academica_request.getAll("proyecto_curricular/"+self.datosFiltro.NivelAcademico.toLowerCase()+"/"+self.datosFiltro.IdFacultad).then(function(response){
+        self.proyectos=response.data;
+      });
+      switch(self.datosFiltro.tipoDedicacion){      
+        case "TCO-MTO":
+          contratacion_request.getAll("contratado/tco").then(function(response){
+            if(response.data){
+              self.contratados=self.contratados.concat(response.data);
+            }
+          });
+          contratacion_request.getAll("contratado/mto").then(function(response){
+            if(response.data){
+              self.contratados=self.contratados.concat(response.data);
+            }
+          });
+          break;
+        case "HCP":
+          contratacion_request.getAll("contratado/hcp").then(function(response){
+            if(response.data){
+              self.contratados=self.contratados.concat(response.data);
+            }
+          });
+          break;
+        case "HCH":
+          contratacion_request.getAll("contratado/hch").then(function(response){
+            if(response.data){
+              self.contratados=self.contratados.concat(response.data);
+            }
+          });
+          break;
+      }
+    });
 
     $.getJSON("/resolucion.json", function(resolucion) {
         self.numero=resolucion["numero"];

@@ -8,9 +8,19 @@
  * Controller of the clienteApp
  */
 angular.module('clienteApp')
-  .controller('HojasDeVidaSeleccionCtrl', function (contratacion_request,contratacion_mid_request,hojas_de_vida_request,$scope,$mdDialog,$routeParams) {
+  .controller('HojasDeVidaSeleccionCtrl', function (contratacion_request,academica_request,contratacion_mid_request,hojas_de_vida_request,$scope,$mdDialog,$routeParams) {
     
     var self = this;
+
+    self.idResolucion=$routeParams.idResolucion;
+
+    contratacion_request.getOne("resolucion_vinculacion_docente",self.idResolucion).then(function(response){      
+      self.datosFiltro=response.data;
+      self.datosFiltro.NivelAcademico=self.datosFiltro.NivelAcademico.toLowerCase();
+      academica_request.getAll("proyecto_curricular/"+self.datosFiltro.NivelAcademico.toLowerCase()+"/"+self.datosFiltro.IdFacultad).then(function(response){
+        self.proyectos=response.data;
+      });
+    });
 
     self.nivelAcademico=$routeParams.nivelAcademico;
     self.idFacultad=$routeParams.idFacultad;
@@ -66,7 +76,15 @@ angular.module('clienteApp')
         {field: 'numHorasSemanales', displayName: 'HORAS SEMANALES'},
         {field: 'numSemanas', displayName: 'SEMANAS'},
         {field: 'dedicacion', displayName: 'DEDICACIÓN'},
-        {field: 'valorContrato', displayName: 'VALOR CONTRATO'}
+        {field: 'valorContrato', displayName: 'VALOR CONTRATO'},
+         {
+          field: 'cancelar',
+          enableSorting: false,
+            enableFiltering: false,
+            width: '5%',
+            displayName: '',
+            cellTemplate: '<button class="form-control fa fa-times" ng-click="grid.appScope.verCancelarResolucion(row)"></button>'
+        }
       ]
     };
 
@@ -135,7 +153,7 @@ angular.module('clienteApp')
     self.registrarContrato = function(){
       contratacion_mid_request.post("validar_contrato/"+self.persona.Id+"/"+self.datosValor.NumHorasSemanales+"/"+self.datosValor.dedicacion.toLowerCase()).then(function(response){
         if(response.data==1){
-          contratacion_mid_request.post("calculo_salario/"+self.nivelAcademico+"/"+self.persona.Id+"/"+self.datosValor.NumSemanas+"/"+self.datosValor.NumHorasSemanales+"/"+self.persona.categoria.toLowerCase()+"/"+self.datosValor.dedicacion.toLowerCase()).then(function(response){
+          contratacion_mid_request.post("calculo_salario/"+self.datosFiltro.NivelAcademico+"/"+self.persona.Id+"/"+self.datosValor.NumSemanas+"/"+self.datosValor.NumHorasSemanales+"/"+self.persona.categoria.toLowerCase()+"/"+self.datosValor.dedicacion.toLowerCase()).then(function(response){
             if(typeof(response.data)=="number"){
               self.valorContrato=response.data;
               self.persona.valorContrato=self.valorContrato;
@@ -215,5 +233,7 @@ angular.module('clienteApp')
         locals: {persona: self.persona, nivelAcademico: self.nivelAcademico, idFacultad: self.idFacultad, idProyectoCurricular: self.idProyectoCurricular,contratados: self.contratosInscritos}
       })
     };
+
+    $scope.selectedIndex = 0;
 
   });

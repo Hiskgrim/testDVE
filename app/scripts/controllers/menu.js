@@ -119,8 +119,8 @@ angular.module('clienteApp')
       $scope.breadcrumb = [];
       $scope.menu_service = [{ //aqui va el servicio de el app de configuracion
         "Id": 6,
-        "Nombre": "Historial de contratos",
-        "Url": "historial_contratos",
+        "Nombre": "Resoluciones",
+        "Url": "resolucion_lista",
         "Opciones": null//contenidoResolucion
       },{ //aqui va el servicio de el app de configuracion
         "Id": 6,

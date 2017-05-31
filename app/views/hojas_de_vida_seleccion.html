@@ -5,6 +5,11 @@
     </div>
     <div class="panel-body">
         <div class="row">
+        	<md-content class="md-padding">
+		    <md-tabs md-selected="selectedIndex" md-dynamic-height md-border-bottom>
+		    <md-tab ng-repeat="tab in hojasDeVidaSeleccion.proyectos"
+		    label="{{tab.Nombre}}">
+		    <div class="demo-tab tab{{$index%4}}">
             <div class="col-lg-6">
               <div class="panel panel-default">
                   	<div class="panel-heading">
@@ -38,11 +43,11 @@
 	                                        <option value="">--SELECCIONE--</option>
 	                                        <option value="HCH">HORA CATEDRA HONORARIOS</option>
 	                                        <option value="HCP">HORA CATEDRA PRESTACIONES</option>                                        
-	                                        <option ng-if="hojasDeVidaSeleccion.nivelAcademico=='pregrado'" value="MTO">MEDIO TIEMPO OCASIONAL</option>
-	                                        <option ng-if="hojasDeVidaSeleccion.nivelAcademico=='pregrado'" value="TCO">TIEMPO COMPLETO OCASIONAL</option>
+	                                        <option ng-if="hojasDeVidaSeleccion.datosFiltro.NivelAcademico=='pregrado'" value="MTO">MEDIO TIEMPO OCASIONAL</option>
+	                                        <option ng-if="hojasDeVidaSeleccion.datosFiltro.NivelAcademico=='pregrado'" value="TCO">TIEMPO COMPLETO OCASIONAL</option>
 	                                    </select>
 	                                </div>
-	                                <div ng-if="hojasDeVidaSeleccion.nivelAcademico=='posgrado'" class="form-group col-lg-6">
+	                                <div ng-if="hojasDeVidaSeleccion.datosFiltro.NivelAcademico=='posgrado'" class="form-group col-lg-6">
 	                                    <label>DOCENTE PLANTA</label>
 	                                    <input type="checkbox" ng-model="hojasDeVidaSeleccion.datosValor.esDocentePlanta" required>
 	                                </div>
@@ -84,22 +89,18 @@
 	        <div class="col-lg-12">
               <div class="panel panel-default">
                   	<div class="panel-heading">
-                      	<h4 class="intro-text text-center"> CONTRATOS A REGISTRAR </h4>
+                      	<h4 class="intro-text text-center"> DOCENTES VINCULADOS </h4>
                   	</div>
                   	<div class="panel-body">
             			<div ui-grid="hojasDeVidaSeleccion.contratados" ui-grid-selection class="grid"></div>
-            			<div class="form-group col-lg-6">
-            				<button type="submit" class="form-control btn-success" ng-click="hojasDeVidaSeleccion.inscribirContratos()">Inscribir conjunto de contratos</button>
-            			</div>
-            			<div class="form-group col-lg-6">
-	            			<button type="submit" class="form-control btn-danger" ng-click="hojasDeVidaSeleccion.eliminarSeleccionados()">Eliminar seleccionados</button>
-	            		</div>
         			</div>
         		</div>
         	</div>
 	    </div>
+	    </div>
+  		</md-tab>
+		</md-tabs>
+		</md-content>
     </div>
-
-    <script type="text/javascript" src="scripts/numeroletras.js"></script>
 
 </div>

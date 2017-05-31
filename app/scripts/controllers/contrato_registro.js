@@ -164,11 +164,6 @@ angular.module('clienteApp')
     }
 
     self.realizarContrato = function(){
-
-      
-
-  //    alert(JSON.stringify(contratosGenerales))
-
     	//self.contratoGeneral.Supervisor={Id:1} -- parseInt(self.contratoGeneral.Supervisor.Id);
     	self.contratoGeneral.UnidadEjecutora.Id;
     	//self.contratoGeneral.UnidadEjecucion.Id=parseInt(self.contratoGeneral.UnidadEjecucion.Id);
@@ -178,24 +173,6 @@ angular.module('clienteApp')
       self.contratoGeneral.NumeroCdp=parseInt(self.contratoGeneral.NumeroCdp);
     	//self.contratoGeneral.FormaPago.Id=parseInt(self.contratoGeneral.FormaPago.Id);
     	self.contratoGeneral.FechaRegistro = new Date();
-
-
-
-/*      var contratosGenerales = []
-
-      self.contratados.forEach(function(contratado){
-
-        var contrato = self.contratoGeneral;
-        contrato.ValorContrato = contratado.ValorContrato;
-        contrato.Contratista = contratado.id;
-
-        contratosGenerales.push(contrato);
-
-      });
-
-*/
-
-
       self.contratados.forEach(function(contratado){
         contratacion_request.post("contrato_general", self.contratoGeneral).then(function(response){
           self.contratoGeneral.ValorContrato=contratado.valorContrato;

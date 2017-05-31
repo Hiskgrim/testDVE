@@ -63,7 +63,7 @@ angular
         controller: 'ResolucionGeneracionCtrl',
         controllerAs: 'resolucionGeneracion'
       })
-      .when('/hojas_de_vida_seleccion/:nivelAcademico/:idFacultad/:idProyectoCurricular', {
+      .when('/hojas_de_vida_seleccion/:idResolucion', {
         templateUrl: 'views/hojas_de_vida_seleccion.html',
         controller: 'HojasDeVidaSeleccionCtrl',
         controllerAs: 'hojasDeVidaSeleccion'
@@ -82,6 +82,21 @@ angular
         templateUrl: 'views/historial_contratos.html',
         controller: 'HistorialContratosCtrl',
         controllerAs: 'historialContratos'
+      })
+      .when('/resolucion_lista', {
+        templateUrl: 'views/resolucion_lista.html',
+        controller: 'ResolucionListaCtrl',
+        controllerAs: 'resolucionLista'
+      })
+      .when('/resolucion_detalle/:idResolucion', {
+        templateUrl: 'views/resolucion_detalle.html',
+        controller: 'ResolucionDetalleCtrl',
+        controllerAs: 'resolucionDetalle'
+      })
+      .when('/resolucion_vista', {
+        templateUrl: 'views/resolucion_vista.html',
+        controller: 'ResolucionVistaCtrl',
+        controllerAs: 'resolucionVista'
       })
       .otherwise({
         redirectTo: '/'
